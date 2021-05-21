@@ -1,16 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import ImgSlider from "./ImgSlider";
 import Viewers from "./Viewers";
 import Movies from "./Movies";
+import db from "../firebase";
+import { useDispatch } from "react-redux";
+import { setMovies } from "../features/movie/movieSlice";
 
 function Home() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    db.collection("movies").onSnapshot((snapshot) => {
+      let tempMovies = snapshot.docs.map((doc) => {
+        // console.log(doc.data());
+        return { id: doc.id, ...doc.data() };
+      });
+      dispatch(setMovies(tempMovies));
+    });
+    // const collections = auth.firestore().listCollections();
+    // collections.forEach((collection) => {
+    //   console.log("Found subcollection with id:", collection.id);
+    // });
+    // db.listCollections().then((collections) => {
+    //   for (let collection of collections) {
+    //     console.log(collection);
+    //   }
+    // });
+  }, []);
+
   return (
     <Container>
       <ImgSlider />
       <Viewers />
       <Movies />
-      Home
     </Container>
   );
 }

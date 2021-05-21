@@ -1,3 +1,18 @@
+## Clone of Disney Plus
+
+Using React and Firebase
+
+Work in progress
+
+create an .env file for your firebase credentials
+
+    REACT_APP_API_KEY=''
+    REACT_APP_AUTH_DOMAIN=''
+    REACT_APP_PROJECT_ID=''
+    REACT_APP_STORAGE_BUCKET=''
+    REACT_APP_MESSAGING_SENDER_ID=''
+    REACT_APP_APP_ID=''
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts
