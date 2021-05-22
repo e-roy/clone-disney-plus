@@ -1,4 +1,7 @@
-import firebase from "firebase";
+import { firebase } from "@firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
+import "firebase/storage";
 
 export const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -9,11 +12,6 @@ export const firebaseConfig = {
   appId: process.env.REACT_APP_APP_ID,
 };
 
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-const db = firebaseApp.firestore();
-const auth = firebase.auth();
-const provider = new firebase.auth.GoogleAuthProvider();
-const storage = firebase.storage();
+firebase.initializeApp(firebaseConfig);
 
-export { auth, provider, storage };
-export default db;
+export default firebase;

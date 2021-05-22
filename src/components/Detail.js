@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import db from "../firebase";
+import firebase from "../firebase";
 
 function Detail() {
   const { id } = useParams();
   const [movie, setMovie] = useState();
   useEffect(() => {
-    db.collection("movies")
+    firebase
+      .firestore()
+      .collection("movies")
       .doc(id)
       .get()
       .then((doc) => {
@@ -16,7 +18,7 @@ function Detail() {
         } else {
         }
       });
-  }, []);
+  }, [id]);
 
   return (
     <Container>
